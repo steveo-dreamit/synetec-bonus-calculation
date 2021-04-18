@@ -9,22 +9,10 @@ namespace SynetecAssessmentApi.Persistence
 {
     public class DbContextGenerator
     {
-        //public static void Initialize(IServiceProvider serviceProvider)
-        //{
-        //    using var context = new AppDbContext(
-        //        serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>());
-
-        //    if (context.Employees.Any()) return;
-
-        //    SeedData(context);
-        //}
-
         public static void Initialize(IServiceProvider serviceProvider)
         {
             var context = serviceProvider.GetRequiredService<AppDbContext>();
-            context.Database.EnsureCreated();
-            //using var context = new AppDbContext(
-            //    serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>());
+            context.Database.EnsureCreated();        
 
             if (context.Employees.Any()) return;
 

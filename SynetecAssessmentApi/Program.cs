@@ -22,9 +22,7 @@ namespace SynetecAssessmentApi
                 DbContextGenerator.Initialize(services);
             }
 
-            host.Run();
-
-            // CreateHostBuilder(args).Build().Run();
+            host.Run();            
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{BAC5D528-98F8-4CAA-9F13-1899FA2DF55F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synetech.UnitTests", "Synetech.UnitTests\Synetech.UnitTests.csproj", "{2A51F542-4870-4F48-B9B8-0C38D214F3AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{BAC5D528-98F8-4CAA-9F13-1899FA2DF55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAC5D528-98F8-4CAA-9F13-1899FA2DF55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAC5D528-98F8-4CAA-9F13-1899FA2DF55F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A51F542-4870-4F48-B9B8-0C38D214F3AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A51F542-4870-4F48-B9B8-0C38D214F3AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A51F542-4870-4F48-B9B8-0C38D214F3AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A51F542-4870-4F48-B9B8-0C38D214F3AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

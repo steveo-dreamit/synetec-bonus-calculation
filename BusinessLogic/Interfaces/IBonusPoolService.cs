@@ -10,6 +10,7 @@ namespace BusinessLogic.Interfaces
     public interface IBonusPoolService
     {
         Task<IEnumerable<EmployeeDto>> GetEmployeesAsync();
-        Task<BonusPoolCalculatorResultDto> CalculateAsync(int bonusPoolAmount, int selectedEmployeeId);
+        Task<decimal> CalculateAsync(decimal bonusPoolAmount, int selectedEmployeeId);
+        Task<BonusPoolCalculatorResultDto> EmployeeResultAsync(decimal bonusPoolAmount, int selectedEmployeeId);
     }
 }

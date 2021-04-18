@@ -17,11 +17,6 @@ namespace BusinessLogic
 
         public BonusPoolService(AppDbContext dbContext)
         {
-            //var dbContextOptionBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            //dbContextOptionBuilder.UseInMemoryDatabase(databaseName: "HrDb");
-
-            //_dbContext = new AppDbContext(dbContextOptionBuilder.Options);
-
             _dbContext = dbContext;
         }
 
@@ -53,7 +48,9 @@ namespace BusinessLogic
             return result;
         }
 
-        public async Task<BonusPoolCalculatorResultDto> CalculateAsync(int bonusPoolAmount, int selectedEmployeeId)
+        // I'll keep the original method pushed to source control and renamed it and made it private, this code would be useful
+        // ** but the brief said only return amount this is then CalculateAsync!
+        public async Task<BonusPoolCalculatorResultDto> EmployeeResultAsync(decimal bonusPoolAmount, int selectedEmployeeId)
         {
             //load the details of the selected employee using the Id
             Employee employee = await _dbContext.Employees
@@ -61,11 +58,11 @@ namespace BusinessLogic
                 .FirstOrDefaultAsync(item => item.Id == selectedEmployeeId);
 
             //get the total salary budget for the company
-            int totalSalary = (int)_dbContext.Employees.Sum(item => item.Salary);
+            decimal totalSalary = (decimal)_dbContext.Employees.Sum(item => item.Salary);
 
             //calculate the bonus allocation for the employee
-            decimal bonusPercentage = (decimal)employee.Salary / (decimal)totalSalary;
-            int bonusAllocation = (int)(bonusPercentage * bonusPoolAmount);
+            decimal bonusPercentage = employee.Salary / totalSalary;
+            decimal bonusAllocation = (bonusPercentage * bonusPoolAmount);
 
             return new BonusPoolCalculatorResultDto
             {
@@ -83,6 +80,21 @@ namespace BusinessLogic
 
                 Amount = bonusAllocation
             };
+        }
+
+        public async Task<decimal> CalculateAsync(decimal bonusPoolAmount, int selectedEmployeeId)
+        {
+            //load the details of the selected employee using the Id
+            Employee employee = await _dbContext.Employees
+                .Include(e => e.Department)
+                .FirstOrDefaultAsync(item => item.Id == selectedEmployeeId);
+
+            //get the total salary budget for the company
+            decimal totalSalary = (decimal)_dbContext.Employees.Sum(item => item.Salary);
+
+            //calculate the bonus allocation for the employee
+            decimal bonusPercentage = employee.Salary / totalSalary;
+            return  (bonusPercentage * bonusPoolAmount);           
         }
     }
 }
