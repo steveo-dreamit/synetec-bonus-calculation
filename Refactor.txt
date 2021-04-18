@@ -1,0 +1,3 @@
+In the controller add AutoFac, this way we take advantage of dependancy injection pattern
+This way we don't need to new up classes to objects
+

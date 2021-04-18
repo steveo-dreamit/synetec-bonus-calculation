@@ -1,3 +1,5 @@
+using BusinessLogic;
+using BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +29,8 @@ namespace SynetecAssessmentApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SynetecAssessmentApi", Version = "v1" });
             });
 
+            services.AddTransient<IBonusPoolService, BonusPoolService>();
+
             services.AddDbContext<AppDbContext>(options =>
                 options.UseInMemoryDatabase(databaseName: "HrDb"));
         }
@@ -34,6 +38,11 @@ namespace SynetecAssessmentApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            //var test = app.ApplicationServices.GetRequiredService<AppDbContext>();
+            //var context = app.ApplicationServices.GetService<AppDbContext>();
+            //DbContextGenerator.Initialize(app.ApplicationServices);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

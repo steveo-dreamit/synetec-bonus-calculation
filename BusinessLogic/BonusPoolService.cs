@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+
+using BusinessLogic.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using SynetecAssessmentApi.Domain;
 using SynetecAssessmentApi.Dtos;
 using SynetecAssessmentApi.Persistence;
@@ -6,18 +9,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SynetecAssessmentApi.Services
+namespace BusinessLogic
 {
-    public class BonusPoolService
+    public class BonusPoolService : IBonusPoolService
     {
         private readonly AppDbContext _dbContext;
 
-        public BonusPoolService()
+        public BonusPoolService(AppDbContext dbContext)
         {
-            var dbContextOptionBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            dbContextOptionBuilder.UseInMemoryDatabase(databaseName: "HrDb");
+            //var dbContextOptionBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            //dbContextOptionBuilder.UseInMemoryDatabase(databaseName: "HrDb");
 
-            _dbContext = new AppDbContext(dbContextOptionBuilder.Options);
+            //_dbContext = new AppDbContext(dbContextOptionBuilder.Options);
+
+            _dbContext = dbContext;
         }
 
         public async Task<IEnumerable<EmployeeDto>> GetEmployeesAsync()
