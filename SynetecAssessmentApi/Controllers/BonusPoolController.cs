@@ -33,6 +33,11 @@ namespace SynetecAssessmentApi.Controllers
         [HttpPost()]
         public async Task<IActionResult> CalculateBonus([FromBody] CalculateBonusDto request)
         {
+            if (request == null)
+            {                
+                return BadRequest();
+            }
+
             if (request.SelectedEmployeeId < 1)
             {
                 ModelState.AddModelError(nameof(CalculateBonusDto.SelectedEmployeeId), "The SelectedEmployeeId value must be greater than 0");

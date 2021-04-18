@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BF9F5664-9DA3-4856-B725-D196FA7B4489}"
 	ProjectSection(SolutionItems) = preProject
 		Refactor.txt = Refactor.txt
+		Refactoring.txt = Refactoring.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{BAC5D528-98F8-4CAA-9F13-1899FA2DF55F}"

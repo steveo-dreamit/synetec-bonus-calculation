@@ -1,0 +1,46 @@
+I took the decison to refactor the api in the following way:
+
+1. Create a source code repository
+2. Run the code and check if it is working as intended, push this code, now we have a base line
+3. We need to seperate out the api as it is tightly coupled into classes, so lets separate these out
+into: 
+
+Business logic
+Domain
+
+4. Now we'll introduce interfaces, this will make the application easier to test and provide dependancy injection
+this will help us moving forward so we don't new up classes
+
+5. As the brief mentioned we need to follow SOLID principles
+Lets check the application:
+
+Remember with api's we return back the information we need such as CalculateResult the brief given parameters we return the result
+No need to return everything else about the employee.
+
+S = Single responsibility - You'll notice the controller looking much better now along with logic
+we could further increase this by allowing the methods to return back an error, test and if an error / not provide the appropriate
+http status
+
+O - Open for extensibility
+We now have dependancy injection and so open to extend the application, as we havwe now separated out into a new project Businesslogic
+We could of course create a base class and that class would be available for extension
+
+L - Liskov Substitute
+Look at the Business logic the parent class can easily replace the child objects
+
+I - Interface segregation
+If we need new functionality we create a new interface, rather than a new method this way the application is forced to depend / rely
+on interfaces that are not used
+
+D - Dependency Inversion
+We don't now violate DI as if the classes in the business logic take care of the calculations etc, if we decide to add email, logger
+then we extend with an interface
+
+
+Notes:
+Given more time I would add a unit of work and repository
+Create a helper to return back an object with a value
+Create a logger
+Add roles and authentication
+
+

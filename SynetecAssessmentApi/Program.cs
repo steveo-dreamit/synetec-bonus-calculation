@@ -1,9 +1,6 @@
-using BusinessLogic;
-using BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using SynetecAssessmentApi.Persistence;
 
 namespace SynetecAssessmentApi
